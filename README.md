@@ -38,7 +38,8 @@ Registeration Number :212220230026
 ## Activitymain.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout 
+                           xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -94,18 +95,16 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 0);
-
         }
-
         ContentResolver contentResolver = getContentResolver();
         Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
         Cursor cursor = contentResolver.query(uri, null, null, null, null);
         Log.i("CONTACT_PROVIDER_DEMO", "TOTAL # Of Contacts :::" + (cursor.getCount()));
         if (0 <= cursor.getCount()) {
             while (cursor.moveToNext()) {
-                @SuppressLint("Range") String contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+                @SuppressLint("Range") String contactName =
+                         cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                 String contactNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-
                 Log.i("CONTACT_PROVIDER_DEMO", "CONTACT NAME  :::" + contactName + "    PH #  :::" + contactNumber);
                 ;
 
@@ -135,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -143,16 +141,12 @@ public class MainActivity extends AppCompatActivity {
 
 </manifest>
 ```
-
-
-
+<br/><br/><br/><br/><br/><br/>
 ## OUTPUT
+
 ![Screenshot (99)](https://user-images.githubusercontent.com/75243072/166180286-0a725d78-00ec-4da5-b0a2-c0a6b5b3f18a.png)
+
 ![Screenshot (98)](https://user-images.githubusercontent.com/75243072/166180298-f578ab12-33ed-41b4-82d3-d99ef3edf808.png)
 
-
-
-
-
-## RESULT
+## <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>RESULT
 Thus a Simple Android Application create your own content providers to get contacts details using Android Studio is developed and executed successfully.
